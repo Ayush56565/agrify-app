@@ -10,7 +10,7 @@ export default function PhoneAuth() {
     const navigation = useNavigation();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [number, setNumber] = useState('');
 
 
     // const handleSubmit = async () => {
@@ -49,13 +49,13 @@ export default function PhoneAuth() {
                         value={name}
                         onChangeText={value => setName(value)}
                     />
-                    <Text className="text-gray-700 ml-4"> Address</Text>
+                    {/* <Text className="text-gray-700 ml-4"> Address</Text>
                     <TextInput
                         className="p-4 bg-gray-100 text-gray-700 rounded-2xl mb-3"
                         placeholder='Enter Email'
                         value={email}
                         onChangeText={value => setEmail(value)}
-                    />
+                    /> */}
                     <Text className="text-gray-700 ml-4">Password</Text>
                     <TextInput
                         className="p-4 bg-gray-100 text-gray-700 rounded-2xl mb-7"
@@ -66,10 +66,8 @@ export default function PhoneAuth() {
                     />
                     <TouchableOpacity
                         className="py-3 bg-yellow-400 rounded-xl"
-
                     >
-                        <Text className="text-xl font-bold text-center text-gray-700">
-                            Sign Up
+                        <Text className="text-xl font-bold text-center text-gray-700"> Continue
                         </Text>
                     </TouchableOpacity>
                 </View>

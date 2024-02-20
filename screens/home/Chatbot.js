@@ -166,6 +166,9 @@ const Chatbot = ({ navigation }) => {
                     style={{
                         height: 40,
                         width: 40,
+                        marginLeft: 5,
+                        paddingRight: 20,
+                        marginTop: 50,
                         alignItems: 'center',
                         justifyContent: 'center',
                     }}
@@ -176,13 +179,13 @@ const Chatbot = ({ navigation }) => {
                         color={COLORS.text}
                     />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => console.log('Save chat')}>
+                {/* <TouchableOpacity onPress={() => console.log('Save chat')}>
                     <Ionicons
                         name="bookmark-outline"
                         size={24}
                         color={COLORS.text}
                     />
-                </TouchableOpacity>
+                </TouchableOpacity> */}
             </View>
 
             <View style={{ flex: 1, justifyContent: 'center' }}>
@@ -231,7 +234,7 @@ const Chatbot = ({ navigation }) => {
                     <TouchableOpacity
                         onPress={submitHandler}
                         style={{
-                            padding: 6,
+                            padding: 10,
                             borderRadius: 8,
                             marginHorizontal: 12,
                         }}
@@ -248,4 +251,4 @@ const Chatbot = ({ navigation }) => {
     )
 }
 
-export default Chatbot
+export default Chatbot;

@@ -7,6 +7,7 @@ import Profile from '../screens/home/Profile';
 import Icon from 'react-native-vector-icons/Ionicons';
 import CropAdviser from '../screens/home/CropAdviser';
 import DiseaseDet from '../screens/home/DiseaseDet';
+import MessagesScreen from '../screens/messages/MessagesScreen';
 import MpNavigator from './mpNavigation';
 const Tab = createBottomTabNavigator();
 
@@ -25,8 +26,8 @@ function BottomTabNavigator() {
                         iconName = focused ? 'ios-home-sharp' : 'ios-home-outline';
                     } else if (route.name === 'DiseaseDet') {
                         iconName = focused ? 'fitness' : 'fitness-outline';
-                    } else if (route.name === 'Chatbot') {
-                        iconName = 'logo-ionitron';
+                    } else if (route.name === 'Messages') {
+                        iconName = focused ? 'chatbubble-ellipses' : 'chatbubble-ellipses-outline';
                     } else if (route.name === 'Marketplace') {
                         iconName = focused
                             ? 'cart'
@@ -39,7 +40,7 @@ function BottomTabNavigator() {
                     return <Icon name={iconName} size={22} color={color} />;
                 },
             })}>
-            <Tab.Screen name="Chatbot" component={Chatbot} />
+            <Tab.Screen name="Messages" component={MessagesScreen} />
             <Tab.Screen name="Marketplace" component={MpNavigator} />
             <Tab.Screen name="Home " component={HomeScreen} />
             <Tab.Screen name="Crop Adviser" component={CropAdviser} />

@@ -5,9 +5,11 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from '../screens/market/Home';
 import MyCart from '../screens/market/MyCart';
 import ProductInfo from '../screens/market/ProductInfo';
+import { StatusBar } from 'expo-status-bar';
 
 const MpNavigator = () => {
     const Stack = createNativeStackNavigator();
+    <StatusBar style='auto' />
 
     return (
         <Stack.Navigator

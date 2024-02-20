@@ -11,13 +11,11 @@ const firebaseConfig = {
     appId: "1:88506030798:web:5b19a06da9b1914568ce9f",
     measurementId: "G-PKNH2L2V37"
 };
-
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+export const auth = getAuth(app);
 export const storage = getStorage(app);
-export const db = getFirestore(app);
-export { app, auth }
+export const firestoreDB = getFirestore(app);
+
 
 
 // https://react-native-65379.firebaseapp.com/__/auth/handler

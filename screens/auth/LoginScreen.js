@@ -6,9 +6,10 @@ import { themeColors } from '../../theme'
 import { useNavigation } from '@react-navigation/native'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../config/firebase'
-
-
+import { SET_USER } from "../../context/actions/userActions";
 import { useState, useContext } from 'react'
+import { useDispatch } from "react-redux";
+
 export default function LoginScreen() {
     const navigation = useNavigation();
     const [email, setEmail] = useState('');
@@ -24,6 +25,44 @@ export default function LoginScreen() {
             }
         }
     }
+    // const handleLogin = async () => {
+    //     if (email && password) {
+    //         await signInWithEmailAndPassword(auth, email, password)
+    //             .then((userCred) => {
+    //                 if (userCred) {
+    //                     // console.log("User Id:", userCred?.user.uid);
+    //                     getDoc(doc(firestoreDB, "users", userCred?.user.uid)).then(
+    //                         (docSnap) => {
+    //                             if (docSnap.exists()) {
+    //                                 console.log("User Data : ", docSnap.data());
+    //                                 navigation.navigate('Home')
+    //                                 // dispatch(SET_USER(docSnap.data()));
+    //                             }
+    //                         }
+    //                     );
+    //                 }
+    //             })
+    //             .catch((err) => {
+    //                 console.log("Error : ", err.message);
+    //                 // if (err.message.includes("wrong-password")) {
+    //                 //     setAlert(true);
+    //                 //     setAlertMessage("Password Mismatch");
+    //                 // } else if (err.message.includes("user-not-found")) {
+    //                 //     setAlert(true);
+    //                 //     setAlertMessage("User Not Found");
+    //                 // } else {
+    //                 //     setAlert(true);
+    //                 //     setAlertMessage("Invalid Email Address");
+    //                 // }
+    //                 // setInterval(() => {
+    //                 //     setAlert(false);
+    //                 // }, 2000);
+    //             });
+    //     }
+    // };
+
+
+
     return (
         <View className="flex-1 bg-white" style={{ backgroundColor: themeColors.bg }}>
             <SafeAreaView className="flex ">

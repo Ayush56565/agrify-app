@@ -74,14 +74,14 @@ export default function DiseaseDet() {
             "state_changed",
             (snapshot) => {
                 const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                // console.log("Upload is " + progress + "% done");
+                console.log("Upload is " + progress + "% done");
             },
             (error) => {
             },
             () => {
                 getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
                     link1 = downloadURL;
-                    await saveRecord(fileType, downloadURL, new Date().toISOString());
+                    // await saveRecord(fileType, downloadURL, new Date().toISOString());
                     axios.post('https://us-central1-diseasedet.cloudfunctions.net/predict1', { link: link1 }, {
                         headers: {
                             'Content-Type': 'application/json',
@@ -140,7 +140,7 @@ export default function DiseaseDet() {
                             </View>
                         </TouchableOpacity>
                     </View>
-                    <Text style={styles.asubtitle}> Response</Text>
+                    <Text style={styles.asubtitle}> Recommendations</Text>
                     <View style={styles.formAction}>
                         <View style={styles.abtn}>
                             <Text style={styles.abtnText}>{answer}</Text>
@@ -173,6 +173,7 @@ const styles = StyleSheet.create({
         height: 300,
         alignSelf: 'center',
         marginBottom: 1,
+        borderColor: 'blue',
     },
     title: {
         fontSize: 27,

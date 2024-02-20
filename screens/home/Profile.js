@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
     StyleSheet,
     SafeAreaView,
@@ -10,6 +10,14 @@ import {
     Switch,
 } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
+import { StatusBar } from 'expo-status-bar';
+import { doc, getDoc } from "firebase/firestore";
+import { firestoreDB, auth } from '../../config/firebase';
+import { SET_USER_NULL } from "../../context/actions/userActions";
+import { useDispatch, useSelector } from "react-redux";
+
+
+const defaultPhotoUrl = "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg";
 const SECTIONS = [
     {
         header: 'Preferences',
@@ -66,20 +74,51 @@ const SECTIONS = [
 ];
 
 export default function Profile() {
+    // const user = auth.currentUser;
+    // const displayName = user.displayName;
+    [userInfo, setUserInfo] = useState('');
+    // const user = useSelector((state) => state.user.user);
+    // const dispatch = useDispatch();
+    // const email = user1.email;
+    // const photoURL = user.photoURL ? user.photoURL : defaultPhotoUrl
+    // const uid = user.uid;
+
+    // const handleLogout = async () => {
+    //     await firebaseAuth.signOut().then(() => {
+    //         dispatch(SET_USER_NULL());
+    //         navigation.replace("LgoinScreen");
+    //     });
+    // };
+
+    const getUser = async () => {
+        const docRef = doc(firestoreDB, "users", auth.currentUser.uid);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+            // console.log("Document data:", docSnap.data());
+            setUserInfo(docSnap.data());
+        } else {
+            // docSnap.data() will be undefined in this case
+            console.log("No such document!");
+        }
+    }
+
+    useEffect(() => {
+        getUser();
+    }, []);
+
     // const { logout } = useContext(AuthContext)
     return (
         <SafeAreaView style={{ flex: 1 }}>
+            <StatusBar style='auto' />
             <ScrollView contentContainerStyle={styles.container}>
                 <View style={styles.profile}>
-                    <TouchableOpacity
-                        onPress={() => {
-                            logout()
-                        }}>
+                    <TouchableOpacity>
                         <View style={styles.profileAvatarWrapper}>
                             <Image
                                 alt=""
                                 source={{
-                                    uri: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2.5&w=256&h=256&q=80',
+                                    uri: userInfo.photoURL ? userInfo.photoURL : defaultPhotoUrl
                                 }}
                                 style={styles.profileAvatar}
                             />
@@ -96,10 +135,10 @@ export default function Profile() {
                     </TouchableOpacity>
 
                     <View style={styles.profileBody}>
-                        <Text style={styles.profileName}>John Doe</Text>
+                        <Text style={styles.profileName}>{userInfo.displayName}</Text>
 
                         <Text style={styles.profileAddress}>
-                            123 Maple Street. Anytown, PA 17101
+                            {auth.currentUser.email}
                         </Text>
                     </View>
                 </View>

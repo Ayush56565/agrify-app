@@ -11,6 +11,7 @@ import {
     Image,
 } from 'react-native';
 import { UserIcon } from 'react-native-heroicons/solid'
+import FloatingButton from '../../components/floatingButton';
 
 const items = [
     {
@@ -69,8 +70,9 @@ const items = [
     },
 ];
 
+
 export default function HomeScreen() {
-    <StatusBar style="light" />
+    <StatusBar style="auto" />
     const navigation = useNavigation();
     return (
         <SafeAreaView style={{ backgroundColor: '#fff' }}>
@@ -83,6 +85,7 @@ export default function HomeScreen() {
                         <UserIcon size="25" color="black" />
                     </TouchableOpacity>
                 </View>
+
                 {items.map(({ img, title, author, authorImg, tag, date }, index) => {
                     return (
                         <TouchableOpacity
@@ -126,6 +129,7 @@ export default function HomeScreen() {
                     );
                 })}
             </ScrollView>
+            <View style={styles.bot}><FloatingButton /></View>
         </SafeAreaView>
     );
 }
@@ -216,5 +220,9 @@ const styles = StyleSheet.create({
         height: 22,
         borderRadius: 9999,
         marginRight: 6,
+    },
+    bot: {
+        marginHorizontal: -25,
+        marginVertical: 5
     },
 });

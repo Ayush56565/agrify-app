@@ -19,18 +19,14 @@ import {
     BottomSheetScrollView
 } from "@gorhom/bottom-sheet";
 import { useRef, useState, useCallback, useEffect } from "react";
-// import { AntDesign } from "@expo/vector-icons";
-// import { Entypo } from "@expo/vector-icons";
 import { GestureHandlerRootView, ScrollView } from "react-native-gesture-handler";
 import axios from 'axios';
-// import Entypo from '@expo/vector-icons/Entypo';
-// import * as SplashScreen from 'expo-splash-screen';
-// import * as Font from 'expo-font';
 
 
 
 // SplashScreen.preventAutoHideAsync();
 export default function CropAdviser() {
+    <StatusBar style="auto" />
     const [loading, setLoading] = useState(false);
     const [form, setForm] = useState({
         country: '',
@@ -77,9 +73,7 @@ export default function CropAdviser() {
 
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
-
             <BottomSheetModalProvider>
-                {/* <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}> */}
                 <View style={styles.container}>
                     <View style={styles.header}>
                         <Text style={styles.title}>Cropify</Text>
@@ -184,14 +178,6 @@ export default function CropAdviser() {
                         </View>
                     </KeyboardAwareScrollView>
                 </View>
-                {/* </SafeAreaView> */}
-                {/* /* <View
-                    style={[
-                        styles.container,
-                        { backgroundColor: isOpen ? "gray" : "white" },
-                    ]}
-                >
-                    <Button title="Present Modal" onPress={handlePresentModal} /> */}
                 <StatusBar style="auto" />
                 <BottomSheetModal
                     ref={bottomSheetModalRef}

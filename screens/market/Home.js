@@ -163,6 +163,8 @@ const Home = ({ navigation }) => {
       style={{
         width: '100%',
         height: '100%',
+        paddingVertical: 39,
+        paddingBottom: 2,
         backgroundColor: '#DCFFB7',
       }}>
       <StatusBar backgroundColor={COLOURS.white} barStyle="dark-content" />

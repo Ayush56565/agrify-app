@@ -1,15 +1,16 @@
 {
   "expo": {
-    "name": "firstApp",
-    "slug": "firstApp",
+    "name": "Agrify",
+    "slug": "Agrify",
     "version": "1.0.0",
-    "plugins": [
-      "@react-native-firebase/app",
-      "@react-native-firebase/auth"
-    ]
+    "extra": {
+      "eas": {
+        "projectId": "ed730cfd-f039-4d20-b563-cfaa79e52d93"
+      }
+    }
   },
   "orientation": "portrait",
-  "icon": "./assets/icon.png",
+  "icon": "./assets/applogo.png",
   "userInterfaceStyle": "light",
   "splash": {
     "image": "./assets/splash.png",
@@ -30,7 +31,7 @@
     "permissions": [
       "android.permission.RECORD_AUDIO"
     ],
-    "package": "com.ajax101.agrify"
+    "package": "com.Agrify.Agrify"
   },
   "web": {
     "favicon": "./assets/favicon.png"
@@ -49,5 +50,5 @@
       "projectId": "9f95c32b-d128-4bef-a8b8-10e7a7727704"
     }
   },
-  "scheme": "firstApp"
+  "scheme": "Agrify"
 }
