@@ -3,7 +3,7 @@
 # dependencies
 node_modules/
 
-context/
+
 .expo/
 dist/
 web-build/
